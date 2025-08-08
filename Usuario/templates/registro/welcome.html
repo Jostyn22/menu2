@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            background: linear-gradient(-45deg, #00c6ff, #0072ff, #6a11cb, #2575fc);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .welcome-container {
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e68900;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>¡Bienvenido a Nuestro Sitio!</h1>
+        <p>Explora nuestras secciones y disfruta de una experiencia única hecha para ti.</p>
+        <a href="{% url 'login' %}" class="btn">Entrar</a>
+    </div>
+</body>
+</html>

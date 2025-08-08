@@ -1,0 +1,35 @@
+{% load static form_tags %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Usuario</title>
+  <link rel="stylesheet" href="{% static 'admin/dist/css/adminlte.min.css' %}">
+</head>
+<body>
+  <div class="container mt-5" style="max-width: 600px;">
+    <h2>Registrar Nuevo Usuario</h2>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+
+      {% for field in form %}
+        <div class="form-group">
+          {{ field.label_tag }}
+          {{ field|add_class:"form-control" }}
+          {{ field.errors }}
+        </div>
+      {% endfor %}
+
+      <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+  </div>
+</body>
+</html>

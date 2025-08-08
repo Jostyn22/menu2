@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="{% static 'admin/plugins/fontawesome-free/css/all.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'admin/dist/css/adminlte.min.css' %}" />
+  <style>
+    body.login-page {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .login-box {
+      width: 400px;
+      background: #ffffffdd;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      padding: 30px;
+    }
+    .login-logo b {
+      color: #1e3c72;
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      display: block;
+      text-align: center;
+      text-shadow: 1px 1px 2px #ccc;
+    }
+    .login-card-body {
+      padding: 0 10px 10px;
+    }
+    .login-box-msg {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .form-control:focus {
+      border-color: #1e3c72;
+      box-shadow: 0 0 8px rgba(30, 60, 114, 0.6);
+    }
+    .input-group-text {
+      background-color: #1e3c72;
+      color: white;
+      border: none;
+    }
+    .btn-primary {
+      background-color: #1e3c72;
+      border-color: #1e3c72;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #16315c;
+      border-color: #16315c;
+    }
+    .alert-danger {
+      border-radius: 5px;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .links {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .links a {
+      color: #1e3c72;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0 8px;
+      transition: color 0.3s ease;
+    }
+    .links a:hover {
+      color: #16315c;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="hold-transition login-page">
+  <div class="login-box">
+    <div class="login-logo">
+      <b>Admin</b>LTE
+    </div>
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg">Ingresa tus datos para continuar</p>
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-danger">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+
+        <form method="post" novalidate>
+          {% csrf_token %}
+          <div class="input-group mb-3">
+            <input type="text" name="username" class="form-control" placeholder="Usuario" required autofocus />
+            <div class="input-group-append">
+              <div class="input-group-text"><span class="fas fa-user"></span></div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" name="password" class="form-control" placeholder="Contraseña" required />
+            <div class="input-group-append">
+              <div class="input-group-text"><span class="fas fa-lock"></span></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="links">
+          <a href="{% url 'register' %}">¿No tienes cuenta? Regístrate aquí</a> |
+          <a href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a> |
+          <a href="{% url 'welcome' %}">Volver al inicio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{% static 'admin/plugins/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'admin/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'admin/dist/js/adminlte.min.js' %}"></script>
+</body>
+</html>
